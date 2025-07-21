@@ -1,0 +1,27 @@
+# Node modules (jangan di-push ke repo)
+node_modules/
+
+# Environment variable
+.env
+.env.*.local
+.env.local
+
+# Log file
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Output
+dist/
+build/
