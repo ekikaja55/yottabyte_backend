@@ -14,7 +14,7 @@ const io = new Server(server, {
   }
 })
 
-const PORT = process.env.PORT 
+const PORT = 4000 
 
 // === IN-MEMORY ROOM STATE ===
 const roomState = {} // { [roomId]: { action: 'play', timestamp: 42.5, updatedAt: 123456789 } }
