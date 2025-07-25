@@ -35,9 +35,7 @@ mongoose
 
 
 // YouTube search endpoint
-app.get('/api/youtube/search', authMiddleware, async (req, res) => {
-    console.log(crypto.randomUUID());
-    
+app.get('/api/youtube/search', authMiddleware, async (req, res) => {    
     const q = req.query.q;
     if (!q) return res.status(400).json({ message: 'Query required' });
 
