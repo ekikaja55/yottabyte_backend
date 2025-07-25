@@ -1,17 +1,17 @@
 // index.js (Express + MongoDB + Socket.IO)
-import express from 'express';
-import http from 'http';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { Server } from 'socket.io';
-import jwt from 'jsonwebtoken';
-import bcryptjs from 'bcryptjs';
-import axios from 'axios';
+const express = require('express');
+const http = require('http');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const { Server } = require('socket.io');
+const jwt = require('jsonwebtoken');
+const bcryptjs = require('bcryptjs');
+const axios = require('axios');
 
-import User from './models/User.js';
-import Room from './models/Room.js';
-import authMiddleware from './middleware/auth.js';
+const User = require('./models/User.js');
+const Room = require('./models/Room.js');
+const authMiddleware = require('./middleware/auth.js');
 dotenv.config();
 
 const app = express();
