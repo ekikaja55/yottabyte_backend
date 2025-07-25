@@ -50,7 +50,6 @@ app.get('/api/youtube/search', authMiddleware, async (req, res) => {
             }
         });
 
-        console.log('YouTube search response:', JSON.stringify(response.data, null, 2));
         const results = response.data.items.map(item => ({
             id: item.id.videoId,
             title: item.snippet.title,
@@ -84,7 +83,6 @@ app.post('/api/register', async (req, res) => {
 // Login endpoint
 app.post('/api/login', async (req, res) => {
     try {
-        console.log(process.env.JWT_SECRET);
 
         const { username, password } = req.body;
         const user = await User.findOne({ username });
