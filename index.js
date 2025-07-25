@@ -11,7 +11,7 @@ import axios from 'axios';
 
 import User from './models/User.js';
 import Room from './models/Room.js';
-import authMiddleware from './middleware/Auth.js';
+import authMiddleware from './middleware/auth.js';
 dotenv.config();
 
 const app = express();
