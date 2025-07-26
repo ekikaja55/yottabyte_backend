@@ -20,14 +20,14 @@ const register = async (req, res) => {
     try {
         const { username, password } = req.body;
         const existing = await User.findOne({ username });
-        
+
         if (existing) {
             return res.status(409).json({ message: 'User already exists' });
         }
-        
+
         const hashed = await bcryptjs.hash(password, 10);
         await User.create({ username, password: hashed, roomId: null });
-        
+
         res.json({ message: 'Registered successfully' });
     } catch (err) {
         console.error('Registration error:', err.message);
@@ -50,11 +50,17 @@ const login = async (req, res) => {
         }
 
         const token = jwt.sign(
-            { id: user._id, username: user.username }, 
+            { id: user._id, username: user.username },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' } 
+            { expiresIn: '1h' }
         );
-        
+
+        // cookies
+        res.cookie('auth_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 3600000 // 1 hour
+        });
         res.json({ token });
     } catch (err) {
         console.error('Login error:', err.message);
